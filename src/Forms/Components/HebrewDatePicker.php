@@ -2,11 +2,8 @@
 
 namespace EliSheinfeld\HebrewDatePicker\Forms\Components;
 
-use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\Field;
-use Filament\Support\Facades\FilamentAsset;
-use Illuminate\Support\Facades\Blade;
 use EliSheinfeld\HebrewDatePicker\Support\HebrewCalendar;
+use Filament\Forms\Components\Field;
 
 class HebrewDatePicker extends Field
 {
@@ -53,14 +50,14 @@ class HebrewDatePicker extends Field
         return $this;
     }
 
-    public function minDate(string|\DateTimeInterface|null $date): static
+    public function minDate(string | \DateTimeInterface | null $date): static
     {
         $this->minDate = $date;
 
         return $this;
     }
 
-    public function maxDate(string|\DateTimeInterface|null $date): static
+    public function maxDate(string | \DateTimeInterface | null $date): static
     {
         $this->maxDate = $date;
 
@@ -143,8 +140,8 @@ class HebrewDatePicker extends Field
             return $this->placeholder;
         }
 
-        return $this->locale === 'he' 
-            ? 'בחר תאריך עברי' 
+        return $this->locale === 'he'
+            ? 'בחר תאריך עברי'
             : 'Select Hebrew date';
     }
 

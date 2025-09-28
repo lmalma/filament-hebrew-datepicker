@@ -5,7 +5,6 @@ namespace EliSheinfeld\HebrewDatePicker\Tests;
 use EliSheinfeld\HebrewDatePicker\Forms\Components\HebrewDatePicker;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\Form;
-use Illuminate\Support\Facades\Config;
 
 class HebrewDatePickerTest extends TestCase
 {
@@ -234,9 +233,9 @@ class HebrewDatePickerTest extends TestCase
             ]);
 
         $container = ComponentContainer::make($form);
-        
+
         $this->assertInstanceOf(ComponentContainer::class, $container);
-        
+
         $component = $container->getComponent('hebrew_birthday');
         $this->assertInstanceOf(HebrewDatePicker::class, $component);
         $this->assertEquals('Hebrew Birthday', $component->getLabel());
