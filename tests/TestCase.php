@@ -1,6 +1,6 @@
 <?php
 
-namespace Eli Sheinfeld\HebrewDatePicker\Tests;
+namespace EliSheinfeld\HebrewDatePicker\Tests;
 
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
-use Eli Sheinfeld\HebrewDatePicker\HebrewDatePickerServiceProvider;
+use EliSheinfeld\HebrewDatePicker\HebrewDatePickerServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -25,7 +25,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Eli Sheinfeld\\HebrewDatePicker\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'EliSheinfeld\\HebrewDatePicker\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 

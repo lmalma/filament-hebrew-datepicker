@@ -1,6 +1,6 @@
 <?php
 
-namespace Eli Sheinfeld\HebrewDatePicker\Commands;
+namespace EliSheinfeld\HebrewDatePicker\Commands;
 
 use Illuminate\Console\Command;
 

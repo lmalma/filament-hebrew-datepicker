@@ -1,16 +1,16 @@
 <?php
 
-namespace Eli Sheinfeld\HebrewDatePicker\Facades;
+namespace EliSheinfeld\HebrewDatePicker\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Eli Sheinfeld\HebrewDatePicker\HebrewDatePicker
+ * @see \EliSheinfeld\HebrewDatePicker\HebrewDatePicker
  */
 class HebrewDatePicker extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Eli Sheinfeld\HebrewDatePicker\HebrewDatePicker::class;
+        return \EliSheinfeld\HebrewDatePicker\HebrewDatePicker::class;
     }
 }

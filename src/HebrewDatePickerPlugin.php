@@ -1,6 +1,6 @@
 <?php
 
-namespace Eli Sheinfeld\HebrewDatePicker;
+namespace EliSheinfeld\HebrewDatePicker;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;

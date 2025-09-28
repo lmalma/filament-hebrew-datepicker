@@ -1,6 +1,6 @@
 <?php
 
-namespace Eli Sheinfeld\HebrewDatePicker\Testing;
+namespace EliSheinfeld\HebrewDatePicker\Testing;
 
 use Livewire\Features\SupportTesting\Testable;
 

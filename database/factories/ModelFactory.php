@@ -1,6 +1,6 @@
 <?php
 
-namespace Eli Sheinfeld\HebrewDatePicker\Database\Factories;
+namespace EliSheinfeld\HebrewDatePicker\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

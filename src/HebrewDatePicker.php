@@ -1,5 +1,5 @@
 <?php
 
-namespace Eli Sheinfeld\HebrewDatePicker;
+namespace EliSheinfeld\HebrewDatePicker;
 
 class HebrewDatePicker {}
