@@ -1,15 +1,15 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Eli Sheinfeld\HebrewDatePicker;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class SkeletonPlugin implements Plugin
+class HebrewDatePickerPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'skeleton';
+        return 'hebrew-date-picker';
     }
 
     public function register(Panel $panel): void
