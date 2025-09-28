@@ -1,6 +1,64 @@
 <?php
 
-// translations for Eli Sheinfeld/HebrewDatePicker
 return [
-    //
+    'placeholder' => 'Select Hebrew date',
+    'today' => 'Today',
+    'clear' => 'Clear',
+    'months' => [
+        1 => 'Tishri',
+        2 => 'Cheshvan',
+        3 => 'Kislev',
+        4 => 'Tevet',
+        5 => 'Shevat',
+        6 => 'Adar',
+        7 => 'Nissan',
+        8 => 'Iyar',
+        9 => 'Sivan',
+        10 => 'Tammuz',
+        11 => 'Av',
+        12 => 'Elul',
+    ],
+    'months_short' => [
+        1 => 'Tish',
+        2 => 'Chesh',
+        3 => 'Kis',
+        4 => 'Tev',
+        5 => 'Shev',
+        6 => 'Adar',
+        7 => 'Nis',
+        8 => 'Iyar',
+        9 => 'Siv',
+        10 => 'Tam',
+        11 => 'Av',
+        12 => 'Elul',
+    ],
+    'days' => [
+        0 => 'Sunday',
+        1 => 'Monday',
+        2 => 'Tuesday',
+        3 => 'Wednesday',
+        4 => 'Thursday',
+        5 => 'Friday',
+        6 => 'Saturday',
+    ],
+    'days_short' => [
+        0 => 'Sun',
+        1 => 'Mon',
+        2 => 'Tue',
+        3 => 'Wed',
+        4 => 'Thu',
+        5 => 'Fri',
+        6 => 'Sat',
+    ],
+    'time' => [
+        'hour' => 'Hour',
+        'minute' => 'Minute',
+        'second' => 'Second',
+    ],
+    'validation' => [
+        'invalid_date' => 'Invalid date',
+        'date_too_early' => 'Date is too early',
+        'date_too_late' => 'Date is too late',
+        'date_disabled' => 'This date is not available',
+    ],
 ];

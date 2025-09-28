@@ -1,8 +1,11 @@
 {
     "name": "eli-sheinfeld/hebrew-date-picker",
-    "description": "This is my package hebrew-date-picker",
+    "description": "Hebrew date picker component for Filament with full Hebrew calendar support",
     "keywords": [
-        "Eli sheinfeld",
+        "filament",
+        "hebrew",
+        "date-picker",
+        "jewish-calendar",
         "laravel",
         "hebrew-date-picker"
     ],
@@ -39,13 +42,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Eli Sheinfeld\\HebrewDatePicker\\": "src/",
-            "Eli Sheinfeld\\HebrewDatePicker\\Database\\Factories\\": "database/factories/"
+            "EliSheinfeld\\HebrewDatePicker\\": "src/",
+            "EliSheinfeld\\HebrewDatePicker\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Eli Sheinfeld\\HebrewDatePicker\\Tests\\": "tests/"
+            "EliSheinfeld\\HebrewDatePicker\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -65,10 +68,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Eli Sheinfeld\\HebrewDatePicker\\HebrewDatePickerServiceProvider"
+                "EliSheinfeld\\HebrewDatePicker\\HebrewDatePickerServiceProvider"
             ],
             "aliases": {
-                "HebrewDatePicker": "Eli Sheinfeld\\HebrewDatePicker\\Facades\\HebrewDatePicker"
+                "HebrewDatePicker": "EliSheinfeld\\HebrewDatePicker\\Facades\\HebrewDatePicker"
             }
         }
     },

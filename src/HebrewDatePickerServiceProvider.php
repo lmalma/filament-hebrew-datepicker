@@ -1,6 +1,6 @@
 <?php
 
-namespace Eli Sheinfeld\HebrewDatePicker;
+namespace EliSheinfeld\HebrewDatePicker;
 
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
@@ -13,8 +13,8 @@ use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Eli Sheinfeld\HebrewDatePicker\Commands\HebrewDatePickerCommand;
-use Eli Sheinfeld\HebrewDatePicker\Testing\TestsHebrewDatePicker;
+use EliSheinfeld\HebrewDatePicker\Commands\HebrewDatePickerCommand;
+use EliSheinfeld\HebrewDatePicker\Testing\TestsHebrewDatePicker;
 
 class HebrewDatePickerServiceProvider extends PackageServiceProvider
 {
@@ -100,9 +100,8 @@ class HebrewDatePickerServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('hebrew-date-picker', __DIR__ . '/../resources/dist/components/hebrew-date-picker.js'),
-            Css::make('hebrew-date-picker-styles', __DIR__ . '/../resources/dist/hebrew-date-picker.css'),
-            Js::make('hebrew-date-picker-scripts', __DIR__ . '/../resources/dist/hebrew-date-picker.js'),
+            AlpineComponent::make('hebrew-date-picker', __DIR__ . '/../resources/js/hebrew-date-picker.js'),
+            Css::make('hebrew-date-picker-styles', __DIR__ . '/../resources/css/index.css'),
         ];
     }
 

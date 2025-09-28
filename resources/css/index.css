@@ -1,1 +1,176 @@
-@import '../../vendor/filament/filament/resources/css/theme.css';
+/* Hebrew Date Picker Styles */
+
+.fi-fo-hebrew-date-picker {
+    position: relative;
+}
+
+.fi-fo-hebrew-date-picker-display-text-input {
+    /* Base styles are inherited from Filament */
+}
+
+.fi-fo-hebrew-date-picker-panel {
+    /* Base panel styles are inherited from Filament */
+}
+
+/* RTL Support for Hebrew */
+.fi-fo-hebrew-date-picker-panel .direction-rtl {
+    direction: rtl;
+}
+
+.fi-fo-hebrew-date-picker-panel .direction-rtl .grid {
+    direction: rtl;
+}
+
+/* Hebrew text alignment */
+.fi-fo-hebrew-date-picker .text-right {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Calendar grid adjustments for RTL */
+.fi-fo-hebrew-date-picker-panel .direction-rtl .grid-cols-7 > * {
+    text-align: center;
+}
+
+/* Month/Year selector adjustments */
+.fi-fo-hebrew-date-picker-panel .flex-row-reverse {
+    flex-direction: row-reverse;
+}
+
+/* Day hover effects */
+.fi-fo-hebrew-date-picker-panel [role="option"]:hover:not(.pointer-events-none) {
+    background-color: rgb(249 250 251 / 1);
+}
+
+.fi-fo-hebrew-date-picker-panel.dark [role="option"]:hover:not(.pointer-events-none) {
+    background-color: rgb(255 255 255 / 0.05);
+}
+
+/* Focus states */
+.fi-fo-hebrew-date-picker-panel [role="option"]:focus-visible {
+    outline: 2px solid rgb(59 130 246 / 1);
+    outline-offset: 2px;
+}
+
+/* Selected date styling */
+.fi-fo-hebrew-date-picker-panel [role="option"][aria-selected="true"] {
+    background-color: rgb(59 130 246 / 1);
+    color: white;
+}
+
+.fi-fo-hebrew-date-picker-panel.dark [role="option"][aria-selected="true"] {
+    background-color: rgb(59 130 246 / 1);
+    color: white;
+}
+
+/* Today indicator */
+.fi-fo-hebrew-date-picker-panel .today-indicator {
+    position: relative;
+}
+
+.fi-fo-hebrew-date-picker-panel .today-indicator::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: rgb(59 130 246 / 1);
+    border-radius: 50%;
+}
+
+/* Time inputs styling */
+.fi-fo-hebrew-date-picker-panel input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.fi-fo-hebrew-date-picker-panel input[type="number"]::-webkit-outer-spin-button,
+.fi-fo-hebrew-date-picker-panel input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hebrew font improvements */
+.fi-fo-hebrew-date-picker .hebrew-text {
+    font-family: 'Segoe UI', 'Arial Hebrew', 'David', 'Times New Roman', serif;
+    font-weight: 400;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .fi-fo-hebrew-date-picker-panel {
+        min-width: 260px;
+        max-width: 90vw;
+    }
+    
+    .fi-fo-hebrew-date-picker-panel .grid-cols-7 {
+        gap: 0.25rem;
+    }
+    
+    .fi-fo-hebrew-date-picker-panel [role="option"] {
+        min-height: 2rem;
+        min-width: 2rem;
+    }
+}
+
+/* Animation for panel show/hide */
+.fi-fo-hebrew-date-picker-panel[x-cloak] {
+    display: none !important;
+}
+
+.fi-fo-hebrew-date-picker-panel {
+    animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Accessibility improvements */
+.fi-fo-hebrew-date-picker-panel [role="option"]:focus {
+    outline: 2px solid rgb(59 130 246 / 1);
+    outline-offset: -2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .fi-fo-hebrew-date-picker-panel [role="option"] {
+        border: 1px solid transparent;
+    }
+    
+    .fi-fo-hebrew-date-picker-panel [role="option"]:hover {
+        border-color: currentColor;
+    }
+    
+    .fi-fo-hebrew-date-picker-panel [role="option"][aria-selected="true"] {
+        border-color: white;
+        background-color: rgb(0 0 0 / 1);
+        color: white;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .fi-fo-hebrew-date-picker-panel {
+        animation: none;
+    }
+    
+    .fi-fo-hebrew-date-picker-panel * {
+        transition: none !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .fi-fo-hebrew-date-picker-panel {
+        display: none !important;
+    }
+}
