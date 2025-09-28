@@ -6,6 +6,7 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Field;
 use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\Facades\Blade;
+use EliSheinfeld\HebrewDatePicker\Support\HebrewCalendar;
 
 class HebrewDatePicker extends Field
 {
@@ -145,6 +146,16 @@ class HebrewDatePicker extends Field
         return $this->locale === 'he' 
             ? 'בחר תאריך עברי' 
             : 'Select Hebrew date';
+    }
+
+    public function getHebrewMonthNames(): array
+    {
+        return HebrewCalendar::getHebrewMonthNames($this->locale);
+    }
+
+    public function getHebrewDayNames(): array
+    {
+        return HebrewCalendar::getHebrewDayNames($this->locale);
     }
 
     public function getLocale(): string

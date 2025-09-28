@@ -1,10 +1,16 @@
-# Hebrew Date Picker for Filament
+# Hebrew Date Picker for Filament / בורר תאריכים עבריים עבור Filament
+
+[English](#english) | [עברית](#hebrew)
+
+---
+
+## English
 
 A comprehensive Hebrew date picker component for Filament PHP that provides full Hebrew calendar support with seamless integration into your Filament forms.
 
-## Features
+### Features
 
-- 🗓️ **Full Hebrew Calendar Support**: Display and select dates using the Hebrew calendar system
+- 🗓️ **Full Hebrew Calendar Support**: Display and select dates using the Hebrew calendar system with accurate calculations
 - 🌐 **Multilingual**: Supports both Hebrew and English interfaces
 - ⏰ **Time Selection**: Optional time picker with hours, minutes, and seconds
 - 🎨 **Filament Native**: Built using Filament's component architecture for perfect integration
@@ -13,13 +19,26 @@ A comprehensive Hebrew date picker component for Filament PHP that provides full
 - ♿ **Accessible**: Built with accessibility in mind following WCAG guidelines
 - 🎯 **Validation**: Built-in validation for date ranges and disabled dates
 - 🚀 **Performance**: Optimized for fast loading and smooth interactions
+- 📅 **Accurate Calculations**: Uses PHP's IntlCalendar for precise Hebrew calendar conversions
 
-## Installation
+### Installation
 
 You can install the package via composer:
 
 ```bash
 composer require eli-sheinfeld/hebrew-date-picker
+```
+
+**Note**: For accurate Hebrew calendar calculations, ensure the `intl` PHP extension is installed:
+```bash
+# Ubuntu/Debian
+sudo apt-get install php-intl
+
+# CentOS/RHEL
+sudo yum install php-intl
+
+# macOS with Homebrew
+brew install php@8.1-intl
 ```
 
 Publish the configuration file (optional):
@@ -34,42 +53,42 @@ Publish the assets:
 php artisan vendor:publish --tag="hebrew-date-picker-assets"
 ```
 
-## Usage
+### Usage
 
-### Basic Usage
+#### Basic Usage
 
 ```php
 use EliSheinfeld\HebrewDatePicker\Forms\Components\HebrewDatePicker;
 
 HebrewDatePicker::make('hebrew_birthday')
-    ->label('תאריך לידה עברי')
+    ->label('Hebrew Birthday')
     ->required()
 ```
 
-### With Time Selection
+#### With Time Selection
 
 ```php
 HebrewDatePicker::make('hebrew_event_datetime')
-    ->label('זמן האירוע')
+    ->label('Event Time')
     ->hasTime()
     ->hasSeconds()
     ->required()
 ```
 
-### English Interface
+#### Hebrew Interface
 
 ```php
 HebrewDatePicker::make('hebrew_date')
-    ->label('Hebrew Date')
-    ->locale('en')
-    ->placeholder('Select Hebrew date')
+    ->label('תאריך עברי')
+    ->locale('he')
+    ->placeholder('בחר תאריך עברי')
 ```
 
-### Date Constraints
+#### Date Constraints
 
 ```php
 HebrewDatePicker::make('hebrew_date')
-    ->label('תאריך')
+    ->label('Date')
     ->minDate(now()->subYears(100))
     ->maxDate(now()->addYears(5))
     ->disabledDates([
@@ -78,34 +97,33 @@ HebrewDatePicker::make('hebrew_date')
     ])
 ```
 
-### Custom Display Format
+#### Custom Display Format
 
 ```php
 HebrewDatePicker::make('hebrew_date')
-    ->label('תאריך')
+    ->label('Date')
     ->displayFormat('j בM Y') // For Hebrew: "15 בתשרי 5784"
     // or
     ->displayFormat('j M Y')   // For English: "15 Tishri 5784"
 ```
 
-### Advanced Configuration
+#### Display Only (Read-Only Mode)
+
+For displaying Hebrew dates in read-only forms:
 
 ```php
-HebrewDatePicker::make('hebrew_date')
-    ->label('תאריך עברי')
+use EliSheinfeld\HebrewDatePicker\Forms\Components\HebrewDateDisplay;
+
+HebrewDateDisplay::make('created_at')
+    ->label('Created Date')
     ->locale('he')
-    ->firstDayOfWeek(0) // 0 = Sunday, 1 = Monday
-    ->closeOnDateSelection(true)
-    ->hasTime()
-    ->displayFormat('j בM Y')
-    ->placeholder('בחר תאריך עברי')
-    ->helperText('בחר תאריך בלוח העברי')
-    ->required()
+    ->showGregorianDate() // Shows: "15 בתשרי 5784 (30/09/2023)"
+    ->showYearInGematria() // Shows year in Hebrew letters
 ```
 
-## Configuration
+### Configuration
 
-The package comes with a comprehensive configuration file that allows you to customize various aspects:
+The package comes with a comprehensive configuration file:
 
 ```php
 // config/hebrew-date-picker.php
@@ -136,33 +154,9 @@ return [
 ];
 ```
 
-## Available Methods
+### Hebrew Calendar Features
 
-### Date Configuration
-
-- `locale(string $locale)` - Set the interface language ('he' or 'en')
-- `displayFormat(string $format)` - Set the display format for dates
-- `firstDayOfWeek(int $day)` - Set the first day of the week (0-6)
-- `placeholder(string $placeholder)` - Set custom placeholder text
-
-### Time Configuration
-
-- `hasTime(bool $condition = true)` - Enable time selection
-- `hasSeconds(bool $condition = true)` - Enable seconds in time selection
-
-### Date Constraints
-
-- `minDate(string|\DateTimeInterface $date)` - Set minimum selectable date
-- `maxDate(string|\DateTimeInterface $date)` - Set maximum selectable date
-- `disabledDates(array $dates)` - Set array of disabled dates
-
-### Behavior
-
-- `closeOnDateSelection(bool $condition = true)` - Auto-close picker on date selection
-
-## Hebrew Calendar Features
-
-### Month Names
+#### Month Names
 
 **Hebrew Interface:**
 - תשרי, חשון, כסלו, טבת, שבט, אדר, ניסן, אייר, סיון, תמוז, אב, אלול
@@ -170,52 +164,211 @@ return [
 **English Interface:**
 - Tishri, Cheshvan, Kislev, Tevet, Shevat, Adar, Nissan, Iyar, Sivan, Tammuz, Av, Elul
 
-### Day Labels
+#### Leap Year Support
 
-**Hebrew Interface:**
-- א׳, ב׳, ג׳, ד׳, ה׳, ו׳, ש׳
+The component automatically handles Hebrew leap years (שנה מעוברת) with proper Adar I and Adar II support.
 
-**English Interface:**
-- Sun, Mon, Tue, Wed, Thu, Fri, Sat
+### Testing
 
-## Validation
+Run the tests with:
 
-The component includes built-in validation for:
+```bash
+composer test
+```
 
-- Valid date formats
-- Date range constraints (min/max dates)
-- Disabled date restrictions
-- Required field validation
+---
 
-## Styling
+## Hebrew
 
-The component uses Filament's native styling system and includes:
+רכיב מקיף לבחירת תאריכים עבריים עבור Filament PHP שמספק תמיכה מלאה בלוח השנה העברי עם אינטגרציה חלקה בטפסי Filament שלכם.
 
-- Dark mode support
-- RTL (Right-to-Left) support for Hebrew text
-- Responsive design for mobile devices
-- Custom CSS classes for advanced styling
+### תכונות
 
-### Custom Styling
+- 🗓️ **תמיכה מלאה בלוח השנה העברי**: הצגה ובחירה של תאריכים באמצעות מערכת הלוח העברי עם חישובים מדויקים
+- 🌐 **רב לשוני**: תמיכה בממשקים בעברית ובאנגלית
+- ⏰ **בחירת זמן**: בורר זמן אופציונלי עם שעות, דקות ושניות
+- 🎨 **מקורי של Filament**: בנוי באמצעות ארכיטקטורת הרכיבים של Filament לאינטגרציה מושלמת
+- 📱 **תמיכה ב-RTL**: תמיכה מלאה בכיוון כתיבה מימין לשמאל לטקסט עברי
+- 🔧 **ניתן להתאמה אישית**: אפשרויות קונפיגורציה נרחבות להתאמה אישית
+- ♿ **נגיש**: בנוי עם נגישות בחשבון בהתאם להנחיות WCAG
+- 🎯 **וולידציה**: וולידציה מובנית לטווחי תאריכים ותאריכים חסומים
+- 🚀 **ביצועים**: מותאם לטעינה מהירה ואינטראקציות חלקות
+- 📅 **חישובים מדויקים**: משתמש ב-IntlCalendar של PHP להמרות מדויקות של לוח עברי
 
-You can customize the appearance by publishing the assets and modifying the CSS:
+### התקנה
+
+ניתן להתקין את החבילה דרך composer:
+
+```bash
+composer require eli-sheinfeld/hebrew-date-picker
+```
+
+**הערה**: לחישובים מדויקים של לוח עברי, וודאו שהרחבת `intl` של PHP מותקנת:
+```bash
+# Ubuntu/Debian
+sudo apt-get install php-intl
+
+# CentOS/RHEL
+sudo yum install php-intl
+
+# macOS עם Homebrew
+brew install php@8.1-intl
+```
+
+פרסום קובץ הקונפיגורציה (אופציונלי):
+
+```bash
+php artisan vendor:publish --tag="hebrew-date-picker-config"
+```
+
+פרסום הנכסים:
 
 ```bash
 php artisan vendor:publish --tag="hebrew-date-picker-assets"
 ```
 
-## JavaScript Integration
+### שימוש
 
-The component uses Alpine.js for frontend functionality and includes:
+#### שימוש בסיסי
 
-- Hebrew calendar calculations
-- Date conversion between Gregorian and Hebrew calendars
-- Keyboard navigation support
-- Accessibility features
+```php
+use EliSheinfeld\HebrewDatePicker\Forms\Components\HebrewDatePicker;
 
-## Examples
+HebrewDatePicker::make('hebrew_birthday')
+    ->label('תאריך לידה עברי')
+    ->required()
+```
 
-### In a Filament Resource
+#### עם בחירת זמן
+
+```php
+HebrewDatePicker::make('hebrew_event_datetime')
+    ->label('זמן האירוע')
+    ->hasTime()
+    ->hasSeconds()
+    ->required()
+```
+
+#### ממשק באנגלית
+
+```php
+HebrewDatePicker::make('hebrew_date')
+    ->label('Hebrew Date')
+    ->locale('en')
+    ->placeholder('Select Hebrew date')
+```
+
+#### הגבלות תאריך
+
+```php
+HebrewDatePicker::make('hebrew_date')
+    ->label('תאריך')
+    ->minDate(now()->subYears(100))
+    ->maxDate(now()->addYears(5))
+    ->disabledDates([
+        '2024-01-01',
+        '2024-12-25'
+    ])
+```
+
+#### פורמט תצוגה מותאם אישית
+
+```php
+HebrewDatePicker::make('hebrew_date')
+    ->label('תאריך')
+    ->displayFormat('j בM Y') // לעברית: "15 בתשרי תשפ״ד"
+    // או
+    ->displayFormat('j M Y')   // לאנגלית: "15 Tishri 5784"
+```
+
+#### הצגה בלבד (מצב קריאה)
+
+להצגת תאריכים עבריים בטפסים במצב קריאה בלבד:
+
+```php
+use EliSheinfeld\HebrewDatePicker\Forms\Components\HebrewDateDisplay;
+
+HebrewDateDisplay::make('created_at')
+    ->label('תאריך יצירה')
+    ->locale('he')
+    ->showGregorianDate() // מציג: "15 בתשרי תשפ״ד (30/09/2023)"
+    ->showYearInGematria() // מציג שנה באותיות עבריות
+```
+
+### קונפיגורציה
+
+החבילה מגיעה עם קובץ קונפיגורציה מקיף:
+
+```php
+// config/hebrew-date-picker.php
+
+return [
+    'default_locale' => 'he',
+    'first_day_of_week' => 0,
+    'display_format' => 'j בM Y',
+    'close_on_date_selection' => true,
+    'enable_time' => false,
+    'enable_seconds' => false,
+    
+    'calendar' => [
+        'show_year_in_gematria' => false,
+        'show_day_in_hebrew' => false,
+        'use_ashkenazi_pronunciation' => false,
+    ],
+    
+    'validation' => [
+        'min_year' => 5000,
+        'max_year' => 6000,
+    ],
+    
+    'assets' => [
+        'load_default_styles' => true,
+        'rtl_support' => true,
+    ],
+];
+```
+
+### תכונות לוח עברי
+
+#### שמות חודשים
+
+**ממשק בעברית:**
+- תשרי, חשון, כסלו, טבת, שבט, אדר, ניסן, אייר, סיון, תמוז, אב, אלול
+
+**ממשק באנגלית:**
+- Tishri, Cheshvan, Kislev, Tevet, Shevat, Adar, Nissan, Iyar, Sivan, Tammuz, Av, Elul
+
+#### תמיכה בשנה מעוברת
+
+הרכיב מטפל אוטומטית בשנים מעוברות עבריות עם תמיכה נכונה באדר א׳ ואדר ב׳.
+
+### מתודות זמינות
+
+#### קונפיגורציה של תאריך
+
+- `locale(string $locale)` - הגדרת שפת הממשק ('he' או 'en')
+- `displayFormat(string $format)` - הגדרת פורמט התצוגה לתאריכים
+- `firstDayOfWeek(int $day)` - הגדרת היום הראשון בשבוע (0-6)
+- `placeholder(string $placeholder)` - הגדרת טקסט מותאם אישית
+
+#### קונפיגורציה של זמן
+
+- `hasTime(bool $condition = true)` - הפעלת בחירת זמן
+- `hasSeconds(bool $condition = true)` - הפעלת שניות בבחירת זמן
+
+#### הגבלות תאריך
+
+- `minDate(string|\DateTimeInterface $date)` - הגדרת תאריך מינימלי לבחירה
+- `maxDate(string|\DateTimeInterface $date)` - הגדרת תאריך מקסימלי לבחירה
+- `disabledDates(array $dates)` - הגדרת מערך של תאריכים חסומים
+
+#### התנהגות
+
+- `closeOnDateSelection(bool $condition = true)` - סגירה אוטומטית של הבורר בבחירת תאריך
+
+### דוגמאות
+
+#### ב-Filament Resource
 
 ```php
 use EliSheinfeld\HebrewDatePicker\Forms\Components\HebrewDatePicker;
@@ -242,7 +395,7 @@ public static function form(Form $form): Form
 }
 ```
 
-### In a Custom Form
+#### בטופס מותאם אישית
 
 ```php
 use EliSheinfeld\HebrewDatePicker\Forms\Components\HebrewDatePicker;
@@ -259,13 +412,49 @@ $form = Form::make()
     ]);
 ```
 
-## Testing
+### וולידציה
 
-Run the tests with:
+הרכיב כולל וולידציה מובנית עבור:
+
+- פורמטים תקינים של תאריכים
+- הגבלות טווח תאריכים (תאריכים מינימליים/מקסימליים)
+- הגבלות תאריכים חסומים
+- וולידציה של שדה חובה
+
+### עיצוב
+
+הרכיב משתמש במערכת העיצוב המקורית של Filament וכולל:
+
+- תמיכה במצב כהה
+- תמיכה ב-RTL (מימין לשמאל) לטקסט עברי
+- עיצוב רספונסיבי למכשירים ניידים
+- מחלקות CSS מותאמות אישית לעיצוב מתקדם
+
+### בדיקות
+
+הרצת הבדיקות:
 
 ```bash
 composer test
 ```
+
+### רישיון
+
+רישיון MIT. אנא ראו [קובץ רישיון](LICENSE.md) למידע נוסף.
+
+### תמיכה
+
+אם אתם מוצאים את החבילה הזו מועילה, אנא שקלו:
+- ⭐ מתן כוכב למאגר
+- 🐛 דיווח על באגים
+- 💡 הצעת תכונות חדשות
+- 📖 שיפור התיעוד
+
+לתמיכה, אנא [פתחו issue](https://github.com/eli-sheinfeld/hebrew-date-picker/issues) ב-GitHub.
+
+---
+
+**הערה חשובה**: החבילה הזו מספקת חישובים מדויקים של לוח עברי באמצעות IntlCalendar של PHP. לחישובים אסטרונומיים ודתיים מדויקים יותר, שקלו שילוב עם ספריות מתמחות כמו `hebcal` או חבילות דומות.
 
 ## Changelog
 
@@ -287,17 +476,3 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Support
-
-If you find this package helpful, please consider:
-- ⭐ Starring the repository
-- 🐛 Reporting bugs
-- 💡 Suggesting new features
-- 📖 Improving documentation
-
-For support, please [open an issue](https://github.com/eli-sheinfeld/hebrew-date-picker/issues) on GitHub.
-
----
-
-**Note**: This package provides a basic Hebrew calendar implementation. For more accurate Hebrew date calculations, consider integrating with specialized Hebrew calendar libraries like `hebcal` or similar packages for precise religious and astronomical calculations.

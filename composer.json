@@ -25,7 +25,11 @@
     "require": {
         "php": "^8.1",
         "filament/filament": "^3.0",
-        "spatie/laravel-package-tools": "^1.15.0"
+        "spatie/laravel-package-tools": "^1.15.0",
+        "nesbot/carbon": "^2.0"
+    },
+    "suggest": {
+        "ext-intl": "Required for accurate Hebrew calendar calculations"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
