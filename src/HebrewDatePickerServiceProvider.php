@@ -75,6 +75,15 @@ class HebrewDatePickerServiceProvider extends PackageServiceProvider
         // Icon Registration
         FilamentIcon::register($this->getIcons());
 
+        // Publish Assets
+        $this->publishes([
+            __DIR__ . '/../resources/js' => public_path('js/hebrew-date-picker'),
+        ], 'hebrew-date-picker-assets');
+
+        $this->publishes([
+            __DIR__ . '/../resources/css' => public_path('css/hebrew-date-picker'),
+        ], 'hebrew-date-picker-assets');
+
         // Handle Stubs
         if (app()->runningInConsole()) {
             foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
@@ -90,7 +99,7 @@ class HebrewDatePickerServiceProvider extends PackageServiceProvider
 
     protected function getAssetPackageName(): ?string
     {
-        return 'eli-sheinfeld/hebrew-date-picker';
+        return 'hebrew-date-picker';
     }
 
     /**
@@ -99,8 +108,10 @@ class HebrewDatePickerServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            AlpineComponent::make('hebrew-date-picker', __DIR__ . '/../resources/js/hebrew-date-picker.js'),
-            Css::make('hebrew-date-picker-styles', __DIR__ . '/../resources/css/index.css'),
+            AlpineComponent::make('hebrew-date-picker', __DIR__ . '/../resources/js/hebrew-date-picker.js')
+                ->loadedOnRequest(),
+            Css::make('hebrew-date-picker-styles', __DIR__ . '/../resources/css/index.css')
+                ->loadedOnRequest(),
         ];
     }
 
