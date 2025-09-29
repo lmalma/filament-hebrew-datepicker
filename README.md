@@ -55,6 +55,14 @@ php artisan vendor:publish --tag="hebrew-date-picker-assets"
 
 ### Usage
 
+**Important**: Make sure to import the correct component class:
+
+```php
+use EliSheinfeld\HebrewDatePicker\Forms\Components\HebrewDatePicker;
+```
+
+**Not** the Facade: `~~use EliSheinfeld\HebrewDatePicker\HebrewDatePicker;~~`
+
 #### Basic Usage
 
 ```php
@@ -176,6 +184,10 @@ Run the tests with:
 composer test
 ```
 
+### Troubleshooting
+
+If you encounter any issues, please check our [Troubleshooting Guide](TROUBLESHOOTING.md) for common problems and solutions.
+
 ---
 
 ## Hebrew
@@ -228,6 +240,14 @@ php artisan vendor:publish --tag="hebrew-date-picker-assets"
 ```
 
 ### שימוש
+
+**חשוב**: וודאו שאתם מייבאים את מחלקת הרכיב הנכונה:
+
+```php
+use EliSheinfeld\HebrewDatePicker\Forms\Components\HebrewDatePicker;
+```
+
+**לא** את ה-Facade: `~~use EliSheinfeld\HebrewDatePicker\HebrewDatePicker;~~`
 
 #### שימוש בסיסי
 
@@ -437,6 +457,10 @@ $form = Form::make()
 ```bash
 composer test
 ```
+
+### פתרון בעיות
+
+אם אתם נתקלים בבעיות, אנא בדקו את [מדריך פתרון הבעיות](TROUBLESHOOTING.md) לבעיות נפוצות ופתרונות.
 
 ### רישיון
 

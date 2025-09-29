@@ -168,6 +168,91 @@ class HebrewDatePicker extends Field
         return $this->firstDayOfWeek;
     }
 
+    public function getDatalistOptions(): array
+    {
+        return [];
+    }
+
+    public function getExtraAlpineAttributes(): array
+    {
+        return [];
+    }
+
+    public function getExtraAttributes(): array
+    {
+        return [];
+    }
+
+    public function getExtraAttributeBag(): \Illuminate\View\ComponentAttributeBag
+    {
+        return new \Illuminate\View\ComponentAttributeBag([]);
+    }
+
+    public function getExtraTriggerAttributeBag(): \Illuminate\View\ComponentAttributeBag
+    {
+        return new \Illuminate\View\ComponentAttributeBag([]);
+    }
+
+    public function getPrefixIconColor(): ?string
+    {
+        return null;
+    }
+
+    public function getSuffixIconColor(): ?string
+    {
+        return null;
+    }
+
+    public function getPrefixActions(): array
+    {
+        return [];
+    }
+
+    public function getSuffixActions(): array
+    {
+        return [];
+    }
+
+    public function getPrefixIcon(): ?string
+    {
+        return null;
+    }
+
+    public function getSuffixIcon(): ?string
+    {
+        return null;
+    }
+
+    public function getPrefixLabel(): ?string
+    {
+        return null;
+    }
+
+    public function getSuffixLabel(): ?string
+    {
+        return null;
+    }
+
+    public function isPrefixInline(): bool
+    {
+        return false;
+    }
+
+    public function isSuffixInline(): bool
+    {
+        return false;
+    }
+
+    public function isReadOnly(): bool
+    {
+        return false;
+    }
+
+    public function isAutofocused(): bool
+    {
+        return false;
+    }
+
     protected function setUp(): void
     {
         parent::setUp();
