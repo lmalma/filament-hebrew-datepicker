@@ -4,7 +4,6 @@ namespace EliSheinfeld\HebrewDatePicker\Support;
 
 use Carbon\Carbon;
 use IntlCalendar;
-use IntlDateFormatter;
 
 class HebrewCalendar
 {
@@ -110,6 +109,7 @@ class HebrewCalendar
         // Hebrew leap year cycle: 7 leap years in every 19 years
         // Leap years are: 3, 6, 8, 11, 14, 17, 19 in the cycle
         $yearInCycle = $hebrewYear % 19;
+
         return in_array($yearInCycle, [3, 6, 8, 11, 14, 17, 0]);
     }
 
@@ -142,7 +142,7 @@ class HebrewCalendar
             return 30; // Adar I in leap year
         }
 
-        if ($hebrewMonth === 13 && !$isLeapYear) {
+        if ($hebrewMonth === 13 && ! $isLeapYear) {
             return 0; // Adar II doesn't exist in regular years
         }
 
@@ -285,13 +285,13 @@ class HebrewCalendar
     public static function formatHebrewDate(array $hebrewDate, string $locale = 'he', string $format = 'j בM Y'): string
     {
         $monthNames = self::getHebrewMonthNames($locale);
-        
+
         if ($locale === 'he') {
             if ($format === 'j בM Y') {
                 return $hebrewDate['day'] . ' ב' . $monthNames[$hebrewDate['month']] . ' ' . $hebrewDate['year'];
             }
         }
-        
+
         return $hebrewDate['day'] . ' ' . $monthNames[$hebrewDate['month']] . ' ' . $hebrewDate['year'];
     }
 

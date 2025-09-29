@@ -2,9 +2,9 @@
 
 namespace EliSheinfeld\HebrewDatePicker\Forms\Components;
 
-use Filament\Forms\Components\Placeholder;
-use EliSheinfeld\HebrewDatePicker\Support\HebrewCalendar;
 use Carbon\Carbon;
+use EliSheinfeld\HebrewDatePicker\Support\HebrewCalendar;
+use Filament\Forms\Components\Placeholder;
 
 class HebrewDateDisplay extends Placeholder
 {
@@ -69,8 +69,8 @@ class HebrewDateDisplay extends Placeholder
     public function getHebrewDateText(): string
     {
         $state = $this->getState();
-        
-        if (!$state) {
+
+        if (! $state) {
             return '';
         }
 
@@ -93,7 +93,7 @@ class HebrewDateDisplay extends Placeholder
             // הוספת תאריך גיאורגיאני
             if ($this->showGregorianDate) {
                 $gregorianText = $gregorianDate->format('d/m/Y');
-                $formattedDate .= $this->locale === 'he' 
+                $formattedDate .= $this->locale === 'he'
                     ? " ({$gregorianText})"
                     : " ({$gregorianText})";
             }
@@ -109,6 +109,6 @@ class HebrewDateDisplay extends Placeholder
     {
         parent::setUp();
 
-        $this->content(fn(): string => $this->getHebrewDateText());
+        $this->content(fn (): string => $this->getHebrewDateText());
     }
 }
